@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pruebillaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cursores">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inicio" Type="tinyint" />
+          <Property Name="celda1" Type="tinyint" />
+          <Property Name="celda2" Type="tinyint" />
+          <Property Name="celda3" Type="tinyint" />
+          <Property Name="celda4" Type="tinyint" />
+          <Property Name="celda5" Type="tinyint" />
+          <Property Name="celda6" Type="tinyint" />
+          <Property Name="celda7" Type="tinyint" />
+          <Property Name="celda8" Type="tinyint" />
+          <Property Name="fin" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Function Name="celdas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dias" Type="int" Mode="In" />
+          <Parameter Name="valor1" Type="int" Mode="In" />
+          <Parameter Name="valor2" Type="int" Mode="In" />
+          <Parameter Name="valor3" Type="int" Mode="In" />
+          <Parameter Name="valor4" Type="int" Mode="In" />
+          <Parameter Name="valor5" Type="int" Mode="In" />
+          <Parameter Name="valor6" Type="int" Mode="In" />
+          <Parameter Name="valor7" Type="int" Mode="In" />
+          <Parameter Name="valor8" Type="int" Mode="In" />
+        </Function>
+        <Function Name="celdasInsertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="valor1" Type="int" Mode="In" />
+          <Parameter Name="valor2" Type="int" Mode="In" />
+          <Parameter Name="valor3" Type="int" Mode="In" />
+          <Parameter Name="valor4" Type="int" Mode="In" />
+          <Parameter Name="valor5" Type="int" Mode="In" />
+          <Parameter Name="valor6" Type="int" Mode="In" />
+          <Parameter Name="valor7" Type="int" Mode="In" />
+          <Parameter Name="valor8" Type="int" Mode="In" />
+          <Parameter Name="accion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="celdasInsertarPorDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="pruebillaModelStoreContainer">
+          <EntitySet Name="cursores" EntityType="Self.cursores" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pruebillaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cursores">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inicio" Type="Byte" />
+          <Property Name="celda1" Type="Byte" />
+          <Property Name="celda2" Type="Byte" />
+          <Property Name="celda3" Type="Byte" />
+          <Property Name="celda4" Type="Byte" />
+          <Property Name="celda5" Type="Byte" />
+          <Property Name="celda6" Type="Byte" />
+          <Property Name="celda7" Type="Byte" />
+          <Property Name="celda8" Type="Byte" />
+          <Property Name="fin" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="pruebillaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cursores" EntityType="Self.cursores" />
+          <FunctionImport Name="celdas" ReturnType="Collection(String)">
+            <Parameter Name="dias" Mode="In" Type="Int32" />
+            <Parameter Name="valor1" Mode="In" Type="Int32" />
+            <Parameter Name="valor2" Mode="In" Type="Int32" />
+            <Parameter Name="valor3" Mode="In" Type="Int32" />
+            <Parameter Name="valor4" Mode="In" Type="Int32" />
+            <Parameter Name="valor5" Mode="In" Type="Int32" />
+            <Parameter Name="valor6" Mode="In" Type="Int32" />
+            <Parameter Name="valor7" Mode="In" Type="Int32" />
+            <Parameter Name="valor8" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="celdasInsertar">
+            <Parameter Name="valor1" Mode="In" Type="Int32" />
+            <Parameter Name="valor2" Mode="In" Type="Int32" />
+            <Parameter Name="valor3" Mode="In" Type="Int32" />
+            <Parameter Name="valor4" Mode="In" Type="Int32" />
+            <Parameter Name="valor5" Mode="In" Type="Int32" />
+            <Parameter Name="valor6" Mode="In" Type="Int32" />
+            <Parameter Name="valor7" Mode="In" Type="Int32" />
+            <Parameter Name="valor8" Mode="In" Type="Int32" />
+            <Parameter Name="accion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="celdasInsertarPorDias" />
+        </EntityContainer>
+        <ComplexType Name="celdas_Result">
+          <Property Type="Byte" Name="empid" Nullable="false" />
+          <Property Type="Byte" Name="inicio" Nullable="true" />
+          <Property Type="Byte" Name="celda1" Nullable="true" />
+          <Property Type="Byte" Name="celda2" Nullable="true" />
+          <Property Type="Byte" Name="celda3" Nullable="true" />
+          <Property Type="Byte" Name="celda4" Nullable="true" />
+          <Property Type="Byte" Name="celda5" Nullable="true" />
+          <Property Type="Byte" Name="celda6" Nullable="true" />
+          <Property Type="Byte" Name="celda7" Nullable="true" />
+          <Property Type="Byte" Name="celda8" Nullable="true" />
+          <Property Type="Byte" Name="fin" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pruebillaModelStoreContainer" CdmEntityContainer="pruebillaEntities">
+          <EntitySetMapping Name="cursores">
+            <EntityTypeMapping TypeName="pruebillaModel.cursores">
+              <MappingFragment StoreEntitySet="cursores">
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
+                <ScalarProperty Name="celda1" ColumnName="celda1" />
+                <ScalarProperty Name="celda2" ColumnName="celda2" />
+                <ScalarProperty Name="celda3" ColumnName="celda3" />
+                <ScalarProperty Name="celda4" ColumnName="celda4" />
+                <ScalarProperty Name="celda5" ColumnName="celda5" />
+                <ScalarProperty Name="celda6" ColumnName="celda6" />
+                <ScalarProperty Name="celda7" ColumnName="celda7" />
+                <ScalarProperty Name="celda8" ColumnName="celda8" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="celdas" FunctionName="pruebillaModel.Store.celdas" />
+          <FunctionImportMapping FunctionImportName="celdasInsertar" FunctionName="pruebillaModel.Store.celdasInsertar" />
+          <FunctionImportMapping FunctionImportName="celdasInsertarPorDias" FunctionName="pruebillaModel.Store.celdasInsertarPorDias" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
